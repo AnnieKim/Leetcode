@@ -1,0 +1,24 @@
+/*
+ Author:     Matthew Jin, marthew777@gmail.com
+ Date:       
+ Problem:    Linked List Cycle I
+ Difficulty: Easy
+ Source:     http://leetcode.com/onlinejudge
+ Notes:
+	Given a linked list, determine if it has a cycle in it.
+	Follow up: Can you solve it without using extra space?
+ Solution:   ...
+*/
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        ListNode *slow=head, *fast=head;
+        while(fast&&fast->next){
+            slow=slow->next;
+            fast=fast->next->next;
+            if(fast==slow) 
+                return true;
+        }
+        return false;
+    }
+};
