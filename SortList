@@ -1,0 +1,43 @@
+/*
+ Author:     Matthew Jin, marthew777@gmail.com
+ Date:       
+ Problem:    Sort List
+ Difficulty: Easy
+ Notes:
+ Sort a linked list in O(n log n) time using constant space complexity.
+ Solution:  1) Merge Sort 
+*/
+class mycompare{
+public:
+    bool operator ()(ListNode *a, ListNode *b){
+        return a->val>b->val;
+    }
+};
+class Solution {
+public:
+    ListNode *sortList(ListNode *head) {
+        if(!head || !head->next) return head;
+        ListNode *slow=head, *fast=head->next;
+        while(fast&&fast->next){
+            slow=slow->next;
+            fast=fast->next->next;
+        }
+        ListNode *newHead = slow->next;
+        slow->next = NULL;
+        head = sortList(head);
+        newHead = sortList(newHead);
+        return mergeTwoLists(head,newHead);
+    }
+    ListNode *mergeTwoLists(ListNode *l1, ListNode *l2) {
+        priority_queue<ListNode*,vector<ListNode*>, mycompare> q;
+        if(l1) q.push(l1);
+        if(l2) q.push(l2);
+        ListNode dummy(0), *cur=&dummy;
+        while(!q.empty()){
+            ListNode *node=q.top();q.pop();
+            if(node->next)
+                q.push(node->next);
+            cur=cur->next=node;
+        }
+        return dummy.next;
+    }
