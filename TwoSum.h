@@ -50,19 +50,4 @@ public:
         res.push_back(max(nums[l].second, nums[r].second));
         return res;
     }
-    
-    vector<int> twoSum_2(vector<int> &numbers, int target) {
-        unordered_map<int, int> map;
-        for (int i = 0; i < numbers.size(); ++i)
-            map[numbers[i]] = i + 1;
-        for (int i = 0; i < numbers.size(); ++i)
-        {
-            unordered_map<int, int>::iterator it = map.find(target - numbers[i]);
-            if (it == map.end()) continue;
-            vector<int> res;
-            res.push_back(min(i+1, it->second));
-            res.push_back(max(i+1, it->second));
-            return res;
-        }
-    }
 };
