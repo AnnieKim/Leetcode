@@ -50,6 +50,7 @@ public:
         if (!head) return NULL;
         unordered_map<RandomListNode *, RandomListNode *> map;
         RandomListNode dummy(0), *curNew = &dummy, *cur = head;
+	map[NULL] = NULL;
         while (cur) 
         {
             if (map.find(cur) == map.end())
