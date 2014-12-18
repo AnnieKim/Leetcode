@@ -23,7 +23,7 @@
  Solution: Similar to 3Sum, 2Sum.
  */
 
-class Solution {
+class Solution {      
 public:
     vector<vector<int> > fourSum(vector<int> &num, int target) {
         int N = num.size();
