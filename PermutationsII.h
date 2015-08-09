@@ -56,7 +56,7 @@ public:
 class Solution2 {
 public:
 	//return all possible unique permutations.
-	vector<vector<int>> permute(vector<int>& nums) {
+	vector<vector<int>> permuteUnique(vector<int>& nums) {
 		sort(nums.begin(), nums.end());//!!!
 		vector<vector<int>> ret;
 		ret.push_back(nums);
