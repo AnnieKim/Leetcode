@@ -1,0 +1,17 @@
+func carPooling(trips [][]int, capacity int) bool {
+    arr1:=make([]int,1001)
+    for _,arr:=range trips{
+        arr1[arr[1]]+=arr[0]
+        arr1[arr[2]]-=arr[0]
+    }
+    if arr1[0]>capacity{
+        return false
+    }
+    for i:=1;i<1001;i++{
+        arr1[i]+=arr1[i-1]
+        if arr1[i]>capacity{
+            return false
+        }
+    }
+    return true
+}
