@@ -1,0 +1,19 @@
+func findPoisonedDuration(timeSeries []int, duration int) int {
+    c,e:=0,0
+    for i,v := range timeSeries{
+        if i==0{
+            c+=duration
+            e = v+duration-1
+            continue
+        } 
+        if v<=e{
+            ne := v+duration-1
+            c+=(ne-e)
+            e = ne
+        }else{
+            c+=duration
+            e = v+duration-1
+        }
+    }
+    return c
+}
